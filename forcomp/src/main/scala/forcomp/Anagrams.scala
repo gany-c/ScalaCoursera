@@ -60,13 +60,23 @@ SELF NOTES source = https://www.youtube.com/watch?v=bnOTEfNEQzw
    *  This means that the `dictionaryByOccurrences` map will contain an entry:
    *
    *    List(('a', 1), ('e', 1), ('t', 1)) -> Seq("ate", "eat", "tea")
-   *
+   * 
+   *   SELF NOTES:- groupBy will convert a list into a map of subLists
+       groupBy takes a function as an input
+       each distinct output of the function will form a key of the map
+       and the input values that generate that key will go into its value sub List			
    */
-  lazy val dictionaryByOccurrences: Map[Occurrences, List[Word]] = ???
+  lazy val dictionaryByOccurrences: Map[Occurrences, List[Word]] = {
+
+	dictionary.groupBy(x => wordOccurrences(x))
+
+  } 
 
   /** Returns all the anagrams of a given word. */
-  def wordAnagrams(word: Word): List[Word] = ???
-
+  def wordAnagrams(word: Word): List[Word] = {
+	dictionaryByOccurrences(wordOccurrences(word))
+ 
+  }	
   /** Returns the list of all subsets of the occurrence list.
    *  This includes the occurrence itself, i.e. `List(('k', 1), ('o', 1))`
    *  is a subset of `List(('k', 1), ('o', 1))`.
