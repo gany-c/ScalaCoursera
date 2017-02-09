@@ -34,11 +34,19 @@ object Anagrams {
    *
    *  Note: you must use `groupBy` to implement this method!
    */
-  def wordOccurrences(w: Word): Occurrences = ???
+  def wordOccurrences(w: Word): Occurrences = {
 
-  /** Converts a sentence into its character occurrence list. */
-  def sentenceOccurrences(s: Sentence): Occurrences = ???
+ 	w.toLowerCase.groupBy(ch=>ch).mapValues(valList => valList.length).toList.sorted
+  }
+  /** 
+Converts a sentence into its character occurrence list. 
+SELF NOTES source = https://www.youtube.com/watch?v=bnOTEfNEQzw
+1. Use foldLeft to convert thesentence to 1 word and then call word occurences on the one word
+*/
+  def sentenceOccurrences(s: Sentence): Occurrences = {
 
+	wordOccurrences(s.foldLeft("")(_+_))
+  }
   /** The `dictionaryByOccurrences` is a `Map` from different occurrences to a sequence of all
    *  the words that have that occurrence count.
    *  This map serves as an easy way to obtain all the anagrams of a word given its occurrence list.
