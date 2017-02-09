@@ -27,7 +27,7 @@ ROUGH NOTES:-
     
     and there can be further conditions in the LHS
     
-   def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
+       def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
     def decode0(tree0: CodeTree, bits0: List[Bit], accu: List[Char]): List[Char] = bits0 match {
 	case Nil => tree0 match {
 	    case l: Leaf => accu :+ l.char
@@ -39,7 +39,9 @@ ROUGH NOTES:-
 	}
     }
     decode0(tree, bits, List())
-  }    
+  }  
+    
+  
 
 7. In step 5, the concat operator :: is used conjunction with pattern matching. 
 
