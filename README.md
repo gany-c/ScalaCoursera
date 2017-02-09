@@ -71,3 +71,5 @@ ROUGH NOTES:-
 19. Map - key value pair, is supposed to be both function and iterable.
 
 20. groupBy - http://alvinalexander.com/scala/how-to-split-sequences-subsets-groupby-partition-scala-cookbook
+
+21. Any collection of pairs can be transformed into a `Map` using the `toMap` method. Similarly, any `Map` can be transformed into a `List` of pairs using the `toList` method.
