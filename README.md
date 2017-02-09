@@ -10,7 +10,7 @@ ROUGH NOTES:-
 
 3. Class definitions also have paramaters, they serve as constructors
 
-4. Objects can be directly defined
+4. Objects can be directly defined - https://dzone.com/articles/brief-overview-object-scala
 
 5. IMPORTANT - Case statements are very powerful, they can work on lists, check if lists are empty, have a single element, have a head and a tail etc. These can serve as powerful tool for expressing recursion.
 
@@ -57,3 +57,15 @@ ROUGH NOTES:-
 12. :: is different from :+  http://stackoverflow.com/questions/15236211/whats-the-difference-between-and
 
 13. Scala has the concept of pairs () and they can be subject to pattern matching too.
+
+14. List methods are - head, init, tail last, reverse, contains, indexOf, ++, sortWith
+
+15. Vector - is a list that is implemented as a 32 child tree
+
+16. Other methods covered - Range, Zip - Used to create pairs out of lists, Unzip
+
+17. For (s) yield e, filter, map (method not collection) applies method to all elements of an array, flatMap
+
+18. Set is similar to java - unique, has no order.
+
+19. Map - key value pair, is supposed to be both function and iterable.
