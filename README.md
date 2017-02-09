@@ -69,3 +69,5 @@ ROUGH NOTES:-
 18. Set is similar to java - unique, has no order.
 
 19. Map - key value pair, is supposed to be both function and iterable.
+
+20. groupBy - http://alvinalexander.com/scala/how-to-split-sequences-subsets-groupby-partition-scala-cookbook
