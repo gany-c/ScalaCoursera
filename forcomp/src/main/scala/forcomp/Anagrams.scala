@@ -99,7 +99,10 @@ SELF NOTES source = https://www.youtube.com/watch?v=bnOTEfNEQzw
    *  Note that the order of the occurrence list subsets does not matter -- the subsets
    *  in the example above could have been displayed in some other order.
    */
-  def combinations(occurrences: Occurrences): List[Occurrences] = ???
+  def combinations(occurrences: Occurrences): List[Occurrences] = occurrences match {
+	case Nil => List(List())
+        case x::xy => for(t <- combinations(xy); s <- 0 to x._2) yield (if(s==0) t else (x._1,s)::t)
+  }	
 
   /** Subtracts occurrence list `y` from occurrence list `x`.
    *
@@ -111,7 +114,28 @@ SELF NOTES source = https://www.youtube.com/watch?v=bnOTEfNEQzw
    *  Note: the resulting value is an occurrence - meaning it is sorted
    *  and has no zero-entries.
    */
-  def subtract(x: Occurrences, y: Occurrences): Occurrences = ???
+  def subtractOld(x: Occurrences, y: Occurrences): Occurrences = {
+
+	(for(xItem <- x; yItem <- y) yield (if(xItem._1==yItem._1) (xItem._1,xItem._2 - yItem._2)  else xItem)).filter(x => x._2 != 0).toList.sortBy(r=>r._1)
+
+}
+
+  def subtract(x: Occurrences, y: Occurrences): Occurrences = {
+	subSansFiltering(x,y).filter(a => a._2!=0)
+
+}  
+
+def subSansFiltering(x: Occurrences, y: Occurrences): Occurrences = y match {
+ 
+  case Nil => x
+  case yOne::yRest => subSansFiltering(subOneElement(x,yOne),yRest)
+}
+
+def subOneElement(x: Occurrences, node:(Char,Int)): Occurrences = x match {
+
+  case Nil => x
+  case xOne::xRest => if(xOne._1 == node._1) (xOne._1, xOne._2 - node._2) :: xRest else xOne :: subOneElement(xRest,node)
+}
 
   /** Returns a list of all anagram sentences of the given sentence.
    *
